@@ -1,8 +1,10 @@
-const spaceshipImg = require("../assets/spaceship-starfish-pixel-art-clipart.png");
+import angle2rad from "../utils/angle2rad";
 
+//const spaceshipImg = require("../assets/spaceshipimage.png");
+// image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 class Spaceship {
   constructor(pos = { x: 100, y: 100 }, size = { w: 10, h: 15 }) {
-    super(pos);
+    //super(pos);
     this.pos = pos;
     this.spaceshipSize = size;
     this.spaceshipColor = "red";
@@ -10,8 +12,8 @@ class Spaceship {
     this.angleSpeed = 0;
     this.spaceshipSpeed = 0;
     this.spaceshipAcceleration = 0;
-    this.image = new Image();
-    this.image.src = ferrariImg;
+    //this.image = new Image();
+    //this.image.src = spaceshipImg;
   }
 
   update(frame) {
@@ -21,8 +23,8 @@ class Spaceship {
       this.spaceshipSpeed * 0.9 + this.spaceshipAcceleration; // la velocidad se va reduciendo pero la aceleración es constante
 
     const newPos = {
-      x: this.pos.x + Math.cos(angle2rad(this.angle)) * this.carSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
-      y: this.pos.y + Math.sin(angle2rad(this.angle)) * this.carSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
+      x: this.pos.x + Math.cos(angle2rad(this.angle)) * this.spaceshipSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
+      y: this.pos.y + Math.sin(angle2rad(this.angle)) * this.spaceshipSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
     };
 
     if (checkLimits(newPos)) {
@@ -37,7 +39,7 @@ class Spaceship {
     ctx.fillStyle = this.spaceshipColor;
 
     ctx.rotate(angle2rad(180));
-    ctx.drawImage(this.image, -25, -13.5, 50, 25);
+    //ctx.drawImage(this.image, -25, -13.5, 50, 25);
     ctx.fillRect(
       -this.spaceshipSize.h / 2,
       -this.spaceshipSize.w / 2,
@@ -52,16 +54,16 @@ class Spaceship {
     } else if (key === "ArrowRight") {
       this.angleSpeed = 4;
     } else if (key === "ArrowUp") {
-      this.carAcceleration = 1;
+      this.spaceshipAcceleration = 1;
     } else if (key === "ArrowDown") {
-      this.carAcceleration = -1;
+      this.spaceshipAcceleration = -1;
     }
   }
   keyboardEventUp(key) {
     if (key === "ArrowUp") {
-      this.carAcceleration = 0;
+      this.spaceshipAcceleration = 0;
     } else if (key === "ArrowDown") {
-      this.carAcceleration = 0;
+      this.spaceshipAcceleration = 0;
     }
   }
 }
