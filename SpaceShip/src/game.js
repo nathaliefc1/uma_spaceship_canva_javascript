@@ -11,7 +11,9 @@ window.addEventListener("load", () => {
   //Get actors
   const actors = [
     new Spaceship({ x: 100, y: 200 }),
-    new Asteroid({ x: 100, y: 100 }),
+    new Asteroid({ x: -30, y: 100 }),
+    new Asteroid({ x: -50, y: 30 }),
+    new Asteroid({ x: -10, y: 130 }),
   ];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
@@ -22,9 +24,9 @@ window.addEventListener("load", () => {
     actors.forEach((actor) => actor.update && actor.update(delta));
     //Clear the canvas
     ctx.clearRect(0, 0, 600, 400);
-    //Update game actor objects
+    //Update game and draw actor objects
     actors.forEach((actor) => {
-      ctx.save();
+      ctx.save(); // guarda el valor inicial para volver a restore y comenzar de nuevo
       actor.draw(ctx, delta);
       ctx.restore();
     });

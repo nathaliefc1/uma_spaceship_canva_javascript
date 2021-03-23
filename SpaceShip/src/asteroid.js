@@ -13,11 +13,13 @@ class Asteroid {
   }
 
   update(frame) {
-    this.angle = Math.abs(((frame * 5) % 60) - 30);
     if (this.pos.x <= 650 && this.pos.x >= -50) {
       this.pos.x += this.x_speed * this.direction_x;
     } else {
       this.pos.x = this.direction_x > 0 ? -50 : 650;
+      this.pos.y = function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      };
     }
   }
 
