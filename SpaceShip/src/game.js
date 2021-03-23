@@ -1,5 +1,5 @@
 import Spaceship from "./Spaceship";
-import asteroid from "./asteroid";
+import Asteroid from "./Asteroid";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -11,26 +11,8 @@ window.addEventListener("load", () => {
   //Get actors
   const actors = [
     new Spaceship({ x: 100, y: 200 }),
-    new asteroid({ x: 100, y: 100 }),
+    new Asteroid({ x: 100, y: 100 }),
   ];
-
-  //Game render loop
-  /*const fps = 25;
-  let frame = 0;
-  setInterval(() => {
-    //Clear the canvas
-    ctx.clearRect(0, 0, 600, 400);
-
-    //Update game actor objects
-    actors.forEach((actor) => {
-      ctx.save();
-      actor.draw(ctx);
-      ctx.restore();
-    });
-
-    //Update currect frame to make animations work
-    frame += 1;
-  }, 1000 / fps);*/
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
@@ -38,10 +20,12 @@ window.addEventListener("load", () => {
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
     actors.forEach((actor) => actor.update && actor.update(delta));
+    //Clear the canvas
     ctx.clearRect(0, 0, 600, 400);
+    //Update game actor objects
     actors.forEach((actor) => {
       ctx.save();
-      actor.draw(delta, ctx);
+      actor.draw(ctx, delta);
       ctx.restore();
     });
 
@@ -51,6 +35,7 @@ window.addEventListener("load", () => {
   //setInterval(render, frameTime);
   window.requestAnimationFrame(render);
 
+  // Eventos del teclado
   window.addEventListener("keydown", (e) => {
     actors.forEach((actor) => actor.keyboardEventDown(e.key));
   });

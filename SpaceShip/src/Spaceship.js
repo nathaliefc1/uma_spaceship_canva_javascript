@@ -27,12 +27,13 @@ class Spaceship {
       y: this.pos.y + Math.sin(angle2rad(this.angle)) * this.spaceshipSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
     };
 
-    if (checkLimits(newPos)) {
+    this.pos = newPos;
+    /*if (checkLimits(newPos)) {
       this.pos = newPos;
-    }
+    }*/
   }
 
-  draw(ctx) {
+  draw(ctx, delta) {
     // draw spaceship
     ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(angle2rad(this.angle));
