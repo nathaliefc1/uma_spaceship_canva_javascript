@@ -1,6 +1,6 @@
 import angle2rad from "../utils/angle2rad";
 
-//const spaceshipImg = require("../assets/spaceshipimage.png");
+const spaceshipImg = require("../assets/spaceshipimage.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 class Spaceship {
   constructor(pos = { x: 100, y: 100 }, size = { w: 10, h: 15 }) {
@@ -12,8 +12,8 @@ class Spaceship {
     this.angleSpeed = 0;
     this.spaceshipSpeed = 0;
     this.spaceshipAcceleration = 0;
-    //this.image = new Image();
-    //this.image.src = spaceshipImg;
+    this.image = new Image();
+    this.image.src = spaceshipImg;
   }
 
   update(frame) {
@@ -39,7 +39,7 @@ class Spaceship {
     ctx.fillStyle = this.spaceshipColor;
 
     ctx.rotate(angle2rad(180));
-    //ctx.drawImage(this.image, -25, -13.5, 50, 25);
+    ctx.drawImage(this.image, -25, -13.5, 50, 25);
     ctx.fillRect(
       -this.spaceshipSize.h / 2,
       -this.spaceshipSize.w / 2,
