@@ -1,7 +1,7 @@
 import angle2rad from "../../utils/angle2rad";
 import checkLimits from "../../utils/checkLimits";
 
-const spaceshipImg = require("../../assets/spaceshipimage.png");
+const spaceshipImg = require("../../assets/UmaSpaceShip.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 
 class Spaceship {

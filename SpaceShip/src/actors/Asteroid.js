@@ -1,5 +1,5 @@
 import { randomX, randomY } from "../../utils/getRandom";
-const asteroidImg = require("../../assets/asteroid2.png");
+const asteroidImg = require("../../assets/asteroid.png");
 //https://www.pngfind.com/download/xTimJh_asteroid-pixel-art-red-button-hd-png-download/
 
 class Asteroid {
