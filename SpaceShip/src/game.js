@@ -1,5 +1,6 @@
 import Spaceship from "./Spaceship";
 import Asteroid from "./Asteroid";
+import randomY from "../utils/getRandomY";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -11,9 +12,9 @@ window.addEventListener("load", () => {
   //Get actors
   const actors = [
     new Spaceship({ x: 100, y: 200 }),
-    new Asteroid({ x: 10, y: 180 }),
-    new Asteroid({ x: -30, y: 100 }),
-    new Asteroid({ x: -10, y: 30 }),
+    new Asteroid({ x: 0, y: randomY() }),
+    new Asteroid({ x: 0, y: randomY() }),
+    new Asteroid({ x: 0, y: randomY() }),
   ];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
@@ -22,13 +23,14 @@ window.addEventListener("load", () => {
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
     actors.forEach((actor) => actor.update && actor.update(delta));
-    //Clear the canvas
-    ctx.clearRect(0, 0, 600, 400);
-    //Update game and draw actor objects
+
+    ctx.clearRect(0, 0, 600, 400); // Limpia el canvas
+
+    // Actualiza juego y pinta actores
     actors.forEach((actor) => {
       ctx.save(); // guarda el valor inicial para volver a restore y comenzar de nuevo
       actor.draw(ctx, delta);
-      ctx.restore();
+      ctx.restore(); // restoring a saves state
     });
 
     window.requestAnimationFrame(render);

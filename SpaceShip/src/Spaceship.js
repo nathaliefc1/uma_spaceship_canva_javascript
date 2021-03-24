@@ -3,9 +3,9 @@ import checkLimits from "../utils/checkLimits";
 
 const spaceshipImg = require("../assets/spaceshipimage.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
+
 class Spaceship {
-  constructor(pos = { x: 100, y: 100 }, size = { w: 10, h: 15 }) {
-    //super(pos);
+  constructor(pos = { x: 100, y: 100 }, size = { w: 15, h: 20 }) {
     this.pos = pos;
     this.spaceshipSize = size;
     this.spaceshipColor = "red";
@@ -19,7 +19,7 @@ class Spaceship {
 
   update(frame) {
     this.angle += this.angleSpeed;
-    this.angleSpeed *= 0.9; // en cada frame, reducimos su velocidad a un 90%
+    this.angleSpeed *= 0.9; // reduce la velocidad en un 90% en cada frame
     this.spaceshipSpeed =
       this.spaceshipSpeed * 0.9 + this.spaceshipAcceleration; // la velocidad se va reduciendo pero la aceleración es constante
 
@@ -41,20 +41,21 @@ class Spaceship {
     ctx.fillStyle = this.spaceshipColor;
 
     ctx.rotate(angle2rad(180));
-    ctx.drawImage(this.image, -25, -13.5, 50, 25);
+    // Pinta el actor rectángulo rojo
     ctx.fillRect(
       -this.spaceshipSize.h / 2,
       -this.spaceshipSize.w / 2,
       this.spaceshipSize.h,
       this.spaceshipSize.w
     );
+    ctx.drawImage(this.image, -25, -13.5, 50, 25); // Pinta la imagen
   }
 
-  addEventListener("click", (event) => {
+  /*addEventListener("click", (event) => {
     const projectile = new projectile(
       canvas/
     )
-  }
+  }*/
 
   keyboardEventDown(key) {
     if (key === "ArrowLeft") {

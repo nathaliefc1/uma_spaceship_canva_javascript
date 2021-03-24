@@ -8,5 +8,6 @@ body {
 }
 
 #root {
-  border: 1px solid red;
+  border: 5px solid blue;
+  color: black;
 }
