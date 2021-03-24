@@ -1,6 +1,5 @@
-import Spaceship from "./Spaceship";
-import Asteroid from "./Asteroid";
-import randomY from "../utils/getRandomY";
+import { Spaceship } from "./actors/Spaceship";
+import { Asteroid } from "./actors/Asteroid";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -11,10 +10,10 @@ window.addEventListener("load", () => {
 
   //Get actors
   const actors = [
-    new Spaceship({ x: 100, y: 200 }),
-    new Asteroid({ x: 0, y: randomY() }),
-    new Asteroid({ x: 0, y: randomY() }),
-    new Asteroid({ x: 0, y: randomY() }),
+    new Spaceship(),
+    new Asteroid(),
+    new Asteroid(),
+    new Asteroid(),
   ];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
@@ -36,7 +35,7 @@ window.addEventListener("load", () => {
     window.requestAnimationFrame(render);
   };
 
-  //setInterval(render, frameTime);
+  // setInterval(render, frameTime)
   window.requestAnimationFrame(render);
 
   // Eventos del teclado
