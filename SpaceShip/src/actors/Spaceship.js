@@ -51,20 +51,20 @@ class Spaceship {
   }
 
   keyboardEventDown(key) {
-    if (key === "ArrowLeft") {
+    if (key === "ArrowUp") {
       this.angleSpeed = -4;
-    } else if (key === "ArrowRight") {
-      this.angleSpeed = 4;
-    } else if (key === "ArrowUp") {
-      this.spaceshipAcceleration = 1;
     } else if (key === "ArrowDown") {
+      this.angleSpeed = 4;
+    } else if (key === "ArrowRight") {
+      this.spaceshipAcceleration = 1;
+    } else if (key === "ArrowLeft") {
       this.spaceshipAcceleration = -1;
     }
   }
   keyboardEventUp(key) {
-    if (key === "ArrowUp") {
+    if (key === "ArrowRight") {
       this.spaceshipAcceleration = 0;
-    } else if (key === "ArrowDown") {
+    } else if (key === "ArrowLeft") {
       this.spaceshipAcceleration = 0;
     }
   }
