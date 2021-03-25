@@ -1,5 +1,5 @@
 import { Spaceship } from "./actors/Spaceship";
-import { Asteroid } from "./actors/Asteroid";
+import { Asteroid} from "./actors/Asteroid";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -7,21 +7,26 @@ window.addEventListener("load", () => {
 
   // Get the 2D context
   const ctx = canvas.getContext("2d");
+  // Fondo del canvas - NO FUNCIONA
+  /*ctx.fillStyle = 'green';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);*/
 
   //Get actors
   const actors = [
     new Spaceship(),
     new Asteroid(),
-    new Asteroid(),
-    new Asteroid(),
   ];
+  const enemy = [new asteroids()];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
+
   const render = (time) => {
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
     actors.forEach((actor) => actor.update && actor.update(delta));
+    
+
 
     ctx.clearRect(0, 0, 600, 400); // Limpia el canvas
 
@@ -30,6 +35,12 @@ window.addEventListener("load", () => {
       ctx.save(); // guarda el valor inicial para volver a restore y comenzar de nuevo
       actor.draw(ctx, delta);
       ctx.restore(); // restoring a saves state
+    });
+
+    enemy.forEach((enemy)=>{
+      ctx.save();
+      enemy.draw(ctx.delta);
+      ctx.restore();
     });
 
     window.requestAnimationFrame(render);

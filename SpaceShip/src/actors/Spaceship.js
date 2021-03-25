@@ -1,5 +1,6 @@
 import angle2rad from "../../utils/angle2rad";
 import checkLimits from "../../utils/checkLimits";
+import { Asteroid } from "./Asteroid";
 
 const spaceshipImg = require("../../assets/UmaSpaceShip.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
@@ -39,8 +40,6 @@ class Spaceship {
     ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(angle2rad(this.angle));
     ctx.fillStyle = this.spaceshipColor;
-
-    ctx.rotate(angle2rad(180));
     // Pinta el actor rectángulo rojo
     ctx.fillRect(
       -this.spaceshipSize.h / 2,
@@ -48,7 +47,7 @@ class Spaceship {
       this.spaceshipSize.h,
       this.spaceshipSize.w
     );
-    ctx.drawImage(this.image, -25, -13.5, 50, 25); // Pinta la imagen
+    ctx.drawImage(this.image, 60,220,600,800,-30, -40, 60, 70); // Pinta la imagen de Uma
   }
 
   keyboardEventDown(key) {
@@ -68,6 +67,12 @@ class Spaceship {
     } else if (key === "ArrowDown") {
       this.spaceshipAcceleration = 0;
     }
+  }
+  getDistance(){  
+	var xDiff = Spaceship.pos.x - Asteroid.pos.x; 
+	var yDiff = Spaceship.pos.y - Asteroid.pos.y;
+  let distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+  console.log(distance);
   }
 }
 

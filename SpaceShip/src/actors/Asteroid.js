@@ -11,6 +11,9 @@ class Asteroid {
     this.asteroidSize = size;
     this.image = new Image();
     this.image.src = asteroidImg;
+    this.asteroids = [];
+    this.asteroidLimit = 20;
+    
   }
 
   update(frame) {
@@ -19,18 +22,24 @@ class Asteroid {
     } else {
       this.pos.x = randomX();
       this.pos.y = randomY();
-      console.log(this.pos.y);
-      console.log(this.pos.x);
     }
   }
 
   draw(ctx, delta) {
     ctx.fillStyle = this.asteroidColor;
-    ctx.drawImage(this.image, this.pos.x - 15, this.pos.y - 5, 50, 25); // Pinta imagen actor
     ctx.fillRect(this.pos.x, this.pos.y, 15, 15); // Pinta cuadrado actor
+    ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, 25, 25); // Pinta imagen actor
   }
+
   keyboardEventDown(key) {}
   keyboardEventUp(key) {}
+
+  
+  setInterval(() => {
+    let enemy = new.Asteroid();
+    this.asteroids.push(enemy);
+  }, 1000);
+
 }
 
-export { Asteroid };
+export { Asteroid, asteroids };

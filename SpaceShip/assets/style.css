@@ -1,13 +1,22 @@
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  background-color: gray;
+}
+
+h1 {
+  font-size: 3em;
+  color: black;
+  text-align: center; 
+  display: flex;
 }
 
 #root {
-  border: 5px solid blue;
+  border: 5px solid #191970;
   color: black;
 }
