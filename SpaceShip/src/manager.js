@@ -18,3 +18,30 @@ let num = 5;
 	return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 }
 */
+import {Asteroid} from "./actors/Asteroid"
+
+class Manager {
+    constructor() {
+        this.state = true; 
+        this.intervalID = null;
+        this.asteroids = [];
+    }
+    // Creo set interval para crear nuevos asteroides cada 5 segundos
+    start() {
+       if(this.state) {
+           this.intervalID = setInterval(() => {
+               const enemy = new Asteroid();
+               this.asteroids.push(enemy);
+           }, 5000);
+           this.state = false
+       } 
+    }
+
+    stop() {
+        if(this.state = false){
+            console.log("KABOOM!!!");
+        }
+    }
+}
+
+export {Manager};

@@ -35,11 +35,11 @@ class Asteroid {
   keyboardEventUp(key) {}
 
   
-  setInterval(() => {
-    let enemy = new.Asteroid();
+  /*setInterval(() => {
+    let enemy = new Asteroid();
     this.asteroids.push(enemy);
   }, 1000);
-
+*/
 }
 
-export { Asteroid, asteroids };
+export { Asteroid };

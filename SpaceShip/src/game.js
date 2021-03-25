@@ -1,5 +1,6 @@
 import { Spaceship } from "./actors/Spaceship";
 import { Asteroid} from "./actors/Asteroid";
+import { Manager } from "./manager";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -7,41 +8,40 @@ window.addEventListener("load", () => {
 
   // Get the 2D context
   const ctx = canvas.getContext("2d");
-  // Fondo del canvas - NO FUNCIONA
-  /*ctx.fillStyle = 'green';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);*/
+  
+  // Instancio variable con el Manager
+  const myManager = new Manager();
 
-  //Get actors
+  // Instancio mis actores fijos durante todo el juego
   const actors = [
-    new Spaceship(),
-    new Asteroid(),
+    new Spaceship()
   ];
-  const enemy = [new asteroids()];
-
+  
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
 
   const render = (time) => {
+    let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
-    actors.forEach((actor) => actor.update && actor.update(delta));
+    const superActors = [...actors, ...enemies];
+    superActors.forEach((actor) => actor.update && actor.update(delta));
     
-
-
     ctx.clearRect(0, 0, 600, 400); // Limpia el canvas
 
     // Actualiza juego y pinta actores
-    actors.forEach((actor) => {
+    superActors.forEach((actor) => {
       ctx.save(); // guarda el valor inicial para volver a restore y comenzar de nuevo
       actor.draw(ctx, delta);
       ctx.restore(); // restoring a saves state
     });
 
-    enemy.forEach((enemy)=>{
+    myManager.start();
+    /*enemy.forEach((enemy)=>{
       ctx.save();
       enemy.draw(ctx.delta);
       ctx.restore();
-    });
+    });*/
 
     window.requestAnimationFrame(render);
   };

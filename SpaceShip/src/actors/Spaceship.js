@@ -68,12 +68,12 @@ class Spaceship {
       this.spaceshipAcceleration = 0;
     }
   }
-  getDistance(){  
+  /*getDistance(){  
 	var xDiff = Spaceship.pos.x - Asteroid.pos.x; 
 	var yDiff = Spaceship.pos.y - Asteroid.pos.y;
   let distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
   console.log(distance);
-  }
+  }*/
 }
 
 export { Spaceship };
