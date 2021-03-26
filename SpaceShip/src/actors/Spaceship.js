@@ -1,8 +1,10 @@
 import angle2rad from "../../utils/angle2rad";
 import checkLimits from "../../utils/checkLimits";
 import { Asteroid } from "./Asteroid";
+import { myManager } from "../manager";
 
 const spaceshipImg = require("../../assets/UmaSpaceShip.png");
+const spaceshipBrokeImg = require("../../assets/explosion.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 
 class Spaceship {
@@ -36,6 +38,9 @@ class Spaceship {
   }
 
   draw(ctx, delta) {
+    if (myManager.spaceShipStatus <= 0) {
+      this.image.src = spaceshipBrokeImg;
+    }
     // draw spaceship
     ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(angle2rad(this.angle));
@@ -45,9 +50,9 @@ class Spaceship {
       -this.spaceshipSize.h / 2,
       -this.spaceshipSize.w / 2,
       this.spaceshipSize.h,
-      this.spaceshipSize.w
+      this.spaceshipSize.w,
     );
-    ctx.drawImage(this.image, 60,220,600,800,-30, -40, 60, 70); // Pinta la imagen de Uma
+    ctx.drawImage(this.image, 60, 220, 600, 800, -30, -40, 60, 70); // Pinta la imagen de Uma
   }
 
   keyboardEventDown(key) {

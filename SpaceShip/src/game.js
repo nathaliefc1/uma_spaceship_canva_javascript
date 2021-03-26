@@ -1,6 +1,6 @@
 import { Spaceship } from "./actors/Spaceship";
-import { Asteroid} from "./actors/Asteroid";
-import { Manager } from "./manager";
+import { Asteroid } from "./actors/Asteroid";
+import { myManager } from "./manager";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -8,15 +8,13 @@ window.addEventListener("load", () => {
 
   // Get the 2D context
   const ctx = canvas.getContext("2d");
-  
+
   // Instancio variable con el Manager
-  const myManager = new Manager();
+  // const myManager = new Manager();
 
   // Instancio mis actores fijos durante todo el juego
-  const actors = [
-    new Spaceship()
-  ];
-  
+  const actors = [new Spaceship()];
+
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
 
@@ -27,7 +25,7 @@ window.addEventListener("load", () => {
     enemies.forEach((asteroid) => myManager.getDistance(asteroid, actors[0]));
     const superActors = [...actors, ...enemies];
     superActors.forEach((actor) => actor.update && actor.update(delta));
-    
+
     ctx.clearRect(0, 0, 800, 600); // Limpia el canvas
 
     // Actualiza juego y pinta actores
@@ -38,7 +36,6 @@ window.addEventListener("load", () => {
     });
 
     myManager.start();
-    
 
     window.requestAnimationFrame(render);
   };
