@@ -26,7 +26,13 @@ class Manager {
     this.state = true;
     this.intervalID = null;
     this.asteroids = [];
+    this.num = 20;
     this.spaceShipStatus = 100;
+    this.chrono = 0;
+  }
+
+  update(frame){
+
   }
 
   // Creo set interval para crear nuevos asteroides cada 5 segundos
@@ -41,7 +47,9 @@ class Manager {
     }
   }
 
-  stop() {}
+  stop() {
+
+  }
 
   getDistance(asteroid, spaceship) {
     const xDiff = spaceship.pos.x - asteroid.pos.x;
@@ -54,6 +62,12 @@ class Manager {
     }
     return distance;
   }
+
+  get_chrono() {
+    return this.chrono.toFixed(2);
+  }
+
+
 }
 
 const myManager = new Manager();

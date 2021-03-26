@@ -40,6 +40,7 @@ class Spaceship {
   draw(ctx, delta) {
     if (myManager.spaceShipStatus <= 0) {
       this.image.src = spaceshipBrokeImg;
+      ctx.drawImage(this.image.src, this.pos.x - 5, this.pos.y - 5, 25, 25)
     }
     // draw spaceship
     ctx.translate(this.pos.x, this.pos.y);
