@@ -57,9 +57,9 @@ class Manager {
         var yDiff = spaceship.pos.y - asteroid.pos.y;
         let distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
         console.log(distance);
-    /*if (distance >=0) {
+    if (distance <=30) {
         console.log("KABOOM")
-    }*/
+    }
     return distance;
   }
 }
