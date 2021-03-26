@@ -1,23 +1,3 @@
-/*const actors = [];
-
-let asteroids = [];
-let num = 5;
-*/
-
-/*setInterval(() =>{
-    let enemy = new.ActorAsteroid = true;
-    this.asteoid = 
-
-})*/
-
-// Distancia entre 2 actores - Teorema de pitagoras
-/*function getDistance(xA, yA, xB, yB) { 
-	var xDiff = xA - xB; 
-	var yDiff = yA - yB;
-
-	return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-}
-*/
 import { Asteroid } from "./actors/Asteroid";
 import { Spaceship } from "./actors/Spaceship";
 
@@ -29,11 +9,9 @@ class Manager {
     this.num = 20;
     this.spaceShipStatus = 100;
     this.chrono = 0;
+    this.pos = { x: 10, y: 20 };
   }
 
-  update(frame){
-
-  }
 
   // Creo set interval para crear nuevos asteroides cada 5 segundos
   start() {
@@ -41,7 +19,7 @@ class Manager {
       this.intervalID = setInterval(() => {
         const enemy = new Asteroid();
         this.asteroids.push(enemy);
-        console.log(this.asteroids);
+        // console.log(this.asteroids);
       }, 5000);
       this.state = false;
     }
@@ -63,11 +41,23 @@ class Manager {
     return distance;
   }
 
-  get_chrono() {
-    return this.chrono.toFixed(2);
+  getChrono() {
+    return `${this.chrono.toFixed(2)} sec`;
   }
 
+  update() {
+    this.chrono += 1 / 100; //25
+  }
 
+  draw(ctx, delta) {
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(
+      `This Chrono ${this.getChrono()}`,
+      this.pos.x,
+      this.pos.y
+    );
+  }
 }
 
 const myManager = new Manager();

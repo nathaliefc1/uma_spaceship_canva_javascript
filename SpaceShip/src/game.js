@@ -9,11 +9,8 @@ window.addEventListener("load", () => {
   // Get the 2D context
   const ctx = canvas.getContext("2d");
 
-  // Instancio variable con el Manager
-  // const myManager = new Manager();
-
   // Instancio mis actores fijos durante todo el juego
-  const actors = [new Spaceship()];
+  const actors = [new Spaceship(), myManager];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
@@ -35,7 +32,12 @@ window.addEventListener("load", () => {
       ctx.restore(); // restoring a saves state
     });
 
+    
+
     myManager.start();
+    // myManager.getChrono();
+    // myManager.update();
+    // myManager.draw();
 
     window.requestAnimationFrame(render);
   };
