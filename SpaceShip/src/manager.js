@@ -19,22 +19,31 @@ let num = 5;
 }
 */
 import {Asteroid} from "./actors/Asteroid"
+import {Spaceship} from "./actors/Spaceship"
+
 
 class Manager {
     constructor() {
         this.state = true; 
         this.intervalID = null;
         this.asteroids = [];
+        
+       
     }
+
     // Creo set interval para crear nuevos asteroides cada 5 segundos
     start() {
        if(this.state) {
            this.intervalID = setInterval(() => {
                const enemy = new Asteroid();
                this.asteroids.push(enemy);
-           }, 5000);
+                console.log(this.asteroids);
+           });
            this.state = false
-       } 
+       } else {
+           clearInterval(this.intervalID);
+       }
+       
     }
 
     stop() {
@@ -42,6 +51,17 @@ class Manager {
             console.log("KABOOM!!!");
         }
     }
+
+    getDistance(asteroid, spaceship){
+        var xDiff = spaceship.pos.x - asteroid.pos.x; 
+        var yDiff = spaceship.pos.y - asteroid.pos.y;
+        let distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+        console.log(distance);
+    /*if (distance >=0) {
+        console.log("KABOOM")
+    }*/
+    return distance;
+  }
 }
 
 export {Manager};

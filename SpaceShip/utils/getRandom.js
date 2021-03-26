@@ -1,9 +1,9 @@
 const randomY = () => {
-  return Math.floor(Math.random() * (400 - 1)) + 1;
+  return Math.floor(Math.random() * (600 - 1)) + 1;
 };
 
 const randomX = () => {
-  return Math.floor(Math.random() * (0 + 300) - 300);
+  return Math.floor(Math.random() * (0 + 800) - 800);
 };
 
 export { randomY, randomX };

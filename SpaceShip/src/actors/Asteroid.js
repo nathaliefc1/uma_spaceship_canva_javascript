@@ -17,7 +17,7 @@ class Asteroid {
   }
 
   update(frame) {
-    if (this.pos.x <= 600 && this.pos.x >= -20) {
+    if (this.pos.x <= 800 && this.pos.x >= -20) {
       this.pos.x += this.xSpeed * this.directionX;
     } else {
       this.pos.x = randomX();
@@ -34,12 +34,6 @@ class Asteroid {
   keyboardEventDown(key) {}
   keyboardEventUp(key) {}
 
-  
-  /*setInterval(() => {
-    let enemy = new Asteroid();
-    this.asteroids.push(enemy);
-  }, 1000);
-*/
 }
 
 export { Asteroid };

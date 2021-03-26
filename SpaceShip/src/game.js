@@ -24,10 +24,11 @@ window.addEventListener("load", () => {
     let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
+    enemies.forEach((asteroid) => myManager.getDistance(asteroid, actors[0]));
     const superActors = [...actors, ...enemies];
     superActors.forEach((actor) => actor.update && actor.update(delta));
     
-    ctx.clearRect(0, 0, 600, 400); // Limpia el canvas
+    ctx.clearRect(0, 0, 800, 600); // Limpia el canvas
 
     // Actualiza juego y pinta actores
     superActors.forEach((actor) => {
@@ -37,11 +38,7 @@ window.addEventListener("load", () => {
     });
 
     myManager.start();
-    /*enemy.forEach((enemy)=>{
-      ctx.save();
-      enemy.draw(ctx.delta);
-      ctx.restore();
-    });*/
+    
 
     window.requestAnimationFrame(render);
   };
