@@ -3,7 +3,7 @@ const asteroidImg = require("../../assets/asteroid.png");
 //https://www.pngfind.com/download/xTimJh_asteroid-pixel-art-red-button-hd-png-download/
 
 class Asteroid {
-  constructor(pos = { x: 0, y: 0 }, size = { w: 15, y: 15 }) {
+  constructor(pos = { x: 0, y: 0 }, size = { w: 25, h: 25 }) {
     this.asteroidColor = "yellow";
     this.pos = pos;
     this.xSpeed = 2;
@@ -13,11 +13,11 @@ class Asteroid {
     this.image.src = asteroidImg;
     this.asteroids = [];
     this.asteroidLimit = 20;
-    
+    this.canvasWidth = 800;
   }
 
   update(frame) {
-    if (this.pos.x <= 800 && this.pos.x >= -20) {
+    if (this.pos.x <= this.canvasWidth && this.pos.x >= -20) {
       this.pos.x += this.xSpeed * this.directionX;
     } else {
       this.pos.x = randomX();
@@ -27,12 +27,12 @@ class Asteroid {
 
   draw(ctx, delta) {
     ctx.fillStyle = this.asteroidColor;
-    ctx.fillRect(this.pos.x, this.pos.y, 15, 15); // Pinta cuadrado actor
-    ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, 25, 25); // Pinta imagen actor
+    ctx.fillRect(this.pos.x, this.pos.y, this.asteroidSize.w - 10, this.asteroidSize.h - 10); // Pinta cuadrado actor
+    ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, this.asteroidSize.w, this.asteroidSize.h); // Pinta imagen actor
   }
 
-  keyboardEventDown(key) {}
-  keyboardEventUp(key) {}
+  keyboardEventDown(key) { }
+  keyboardEventUp(key) { }
 
 }
 

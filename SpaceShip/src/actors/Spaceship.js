@@ -8,10 +8,10 @@ const spaceshipBrokeImg = require("../../assets/explosion.png");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 
 class Spaceship {
-  constructor(pos = { x: 100, y: 100 }, size = { w: 15, h: 20 }) {
+  constructor(pos = { x: 720, y: 300 }, size = { w: 60, h: 60 }) {
     this.pos = pos;
     this.spaceshipSize = size;
-    this.spaceshipColor = "red";
+    this.spaceshipColor = "transparent";
     this.angle = 0;
     this.angleSpeed = 0;
     this.spaceshipSpeed = 0;
@@ -40,7 +40,8 @@ class Spaceship {
   draw(ctx, delta) {
     if (myManager.spaceShipStatus <= 0) {
       this.image.src = spaceshipBrokeImg;
-      // ctx.drawImage(this.image, 0, 0, 512, 512, this.pos.x, this.pos.y, 30, 30);
+      ctx.drawImage(this.image, 0, 0, 512, 512, this.pos.x - 25, this.pos.y - 27, this.spaceshipSize.w, this.spaceshipSize.h);
+      myManager.gameOver = true;
     }
     // draw spaceship
     ctx.translate(this.pos.x, this.pos.y);
@@ -48,12 +49,12 @@ class Spaceship {
     ctx.fillStyle = this.spaceshipColor;
     // Pinta el actor rectángulo rojo
     ctx.fillRect(
-      -this.spaceshipSize.h / 2,
-      -this.spaceshipSize.w / 2,
-      this.spaceshipSize.h,
-      this.spaceshipSize.w,
+      -this.spaceshipSize.h / 6,
+      -this.spaceshipSize.w / 6,
+      this.spaceshipSize.h / 3,
+      this.spaceshipSize.w / 3,
     );
-    ctx.drawImage(this.image, 60, 220, 600, 800, -30, -40, 60, 70); // Pinta la imagen de Uma
+    ctx.drawImage(this.image, 3135, 1000, 610, 800, - this.spaceshipSize.w / 2, - this.spaceshipSize.h / 2, this.spaceshipSize.w * 1.1, this.spaceshipSize.h * 1.1); // Pinta la imagen de Uma
   }
 
   keyboardEventDown(key) {
@@ -74,12 +75,6 @@ class Spaceship {
       this.spaceshipAcceleration = 0;
     }
   }
-  /*getDistance(){  
-	var xDiff = Spaceship.pos.x - Asteroid.pos.x; 
-	var yDiff = Spaceship.pos.y - Asteroid.pos.y;
-  let distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-  console.log(distance);
-  }*/
 }
 
 export { Spaceship };

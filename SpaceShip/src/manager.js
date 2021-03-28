@@ -7,9 +7,11 @@ class Manager {
     this.intervalID = null;
     this.asteroids = [];
     this.num = 20;
-    this.spaceShipStatus = 100;
+    this.spaceShipStatus = 10; //DEBERIA SER 100
     this.chrono = 0;
     this.pos = { x: 10, y: 20 };
+    this.score = 0;
+    this.gameOver = false;
   }
 
 
@@ -35,8 +37,6 @@ class Manager {
     const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     if (distance <= 30) {
       this.spaceShipStatus -= 1;
-      console.log("KABOOM");
-
     }
     return distance;
   }
@@ -50,15 +50,19 @@ class Manager {
   }
 
   draw(ctx, delta) {
-    ctx.font = "15px Arial";
-    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "white";
     ctx.fillText(
-      `This Chrono ${this.getChrono()}`,
+      `Your time is: ${this.getChrono()}`,
       this.pos.x,
       this.pos.y
     );
   }
+
+  keyboardEventDown(key) { }
+  keyboardEventUp(key) { }
 }
+
 
 const myManager = new Manager();
 

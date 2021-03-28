@@ -6,17 +6,36 @@ body {
   width: 100vw;
   justify-content: space-around;
   align-items: center;
-  background-color: gray;
+  background: linear-gradient(to bottom, black, #191970);
+  /*background-color: #191919;*/
 }
 
-h1 {
-  font-size: 3em;
-  color: black;
+.title {
+  font-size: 4em;
+  font-family: Monospace, Georgia;
+  color: silver;
   text-align: center; 
   display: flex;
+  text-shadow: 1px 1px 1px black;
+  margin: 0;
 }
 
 #root {
-  border: 5px solid #191970;
-  color: black;
+  border: 9px solid linear-gradient(to bottom, black, #191970);
+  background: url('../assets/back.png') no-repeat;
+  background-size: cover;
+}
+#start-game {
+  width: 100px;
+  padding: 12px;
+  margin: 12px;
+  font-size: 16px;
+  font-family: Monospace;
+  cursor: pointer;
+}
+
+#start-game:hover{
+  color:blanchedalmond;
+  background-color: darkblue;
+  border-color: darkblue;
 }
