@@ -7,7 +7,7 @@ class Manager {
     this.intervalID = null;
     this.asteroids = [];
     this.num = 20;
-    this.spaceShipStatus = 100; //DEBERIA SER 100
+    this.spaceShipStatus = 1;
     this.chrono = 0;
     this.pos = { x: 10, y: 20 };
     this.score = 0;
