@@ -21,14 +21,16 @@ window.addEventListener("load", () => {
     if (myManager.gameOver) {
       setTimeout(() => {
         window.cancelAnimationFrame(0);
-        const startAgain = window.confirm(`Game over! \nYour score is: ${myManager.getChrono()}\nStart again?`);
-        if (startAgain) {
-          console.log('yes');
-        } else {
-          window.close();
-        }
+        // const startAgain = window.confirm(
+        //   `Game over! \nYour score is: ${myManager.getChrono()}\nStart again?`,
+        // );
+        // if (startAgain) {
+        //   console.log("yes");
+        // } else {
+        //   window.close();
+        // }
         return;
-      }, 300)
+      }, 300);
     }
     let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
 
@@ -37,7 +39,7 @@ window.addEventListener("load", () => {
     enemies.forEach((asteroid, i) => {
       myManager.getDistance(asteroid, actors[0]);
       if (asteroid.pos.x >= asteroid.canvasWidth) {
-        enemies.splice(i, 1);
+        enemies.splice(i - 1, 1);
       }
     });
     const superActors = [...actors, ...enemies];
@@ -64,7 +66,7 @@ window.addEventListener("load", () => {
   startButton.addEventListener("click", (e) => {
     backgroundMusic.play();
     window.requestAnimationFrame(render);
-  })
+  });
 
   //window.requestAnimationFrame(render);
 
@@ -74,7 +76,7 @@ window.addEventListener("load", () => {
   });
   window.addEventListener("keyup", (e) => {
     actors.forEach((actor) => {
-      actor.keyboardEventUp(e.key)
+      actor.keyboardEventUp(e.key);
     });
   });
 });

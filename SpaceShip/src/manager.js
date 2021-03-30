@@ -14,7 +14,6 @@ class Manager {
     this.gameOver = false;
   }
 
-
   // Creo set interval para crear nuevos asteroides cada 5 segundos
   start() {
     if (this.state) {
@@ -27,9 +26,7 @@ class Manager {
     }
   }
 
-  stop() {
-
-  }
+  stop() {}
 
   getDistance(asteroid, spaceship) {
     const xDiff = spaceship.pos.x - asteroid.pos.x;
@@ -37,7 +34,7 @@ class Manager {
     const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     if (distance <= 30) {
       this.spaceShipStatus -= 1;
-      console.log("KABOOM")
+      console.log("KABOOM");
     }
     return distance;
   }
@@ -53,17 +50,12 @@ class Manager {
   draw(ctx, delta) {
     ctx.font = "20px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(
-      `Your time is: ${this.getChrono()}`,
-      this.pos.x,
-      this.pos.y
-    );
+    ctx.fillText(`Your time is: ${this.getChrono()}`, this.pos.x, this.pos.y);
   }
 
-  keyboardEventDown(key) { }
-  keyboardEventUp(key) { }
+  keyboardEventDown(key) {}
+  keyboardEventUp(key) {}
 }
-
 
 const myManager = new Manager();
 
