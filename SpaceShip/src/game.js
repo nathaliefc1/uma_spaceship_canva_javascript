@@ -20,6 +20,7 @@ window.addEventListener("load", () => {
   let over = false;
 
   const render = (time) => {
+
     let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
 
     let delta = (time - lastFrame) / 1000;
