@@ -2,6 +2,7 @@ import { Spaceship } from "./actors/Spaceship";
 import { Asteroid } from "./actors/Asteroid";
 import { myManager } from "./manager";
 import { Snack } from "./actors/Snack";
+import { SpaceStation } from "./actors/SpaceStation";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -18,7 +19,8 @@ window.addEventListener("load", () => {
     myManager,
     new Snack(),
     new Snack(),
-    new Snack()];
+    new Snack(),
+    new SpaceStation];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;

@@ -18,6 +18,8 @@ class Spaceship {
     this.spaceshipAcceleration = 0;
     this.image = new Image();
     this.image.src = spaceshipImg;
+    this.frameX = 0;
+    this.frameY = 0;
   }
 
   update(frame) {

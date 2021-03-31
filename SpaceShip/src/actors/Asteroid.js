@@ -6,8 +6,8 @@ class Asteroid {
   constructor(pos = { x: 0, y: 0 }, size = { w: 25, h: 25 }) {
     this.asteroidColor = "yellow";
     this.pos = pos;
-    this.xSpeed = 2;
-    this.directionX = 1;
+    this.xSpeed = 3;
+    this.directionX = +1;
     this.asteroidSize = size;
     this.image = new Image();
     this.image.src = asteroidImg;
@@ -17,7 +17,7 @@ class Asteroid {
   }
 
   update(frame) {
-    if (this.pos.x <= this.canvasWidth && this.pos.x >= -20) {
+    if (this.pos.x <= this.canvasWidth && this.pos.x >= -5) {
       this.pos.x += this.xSpeed * this.directionX;
     } else {
       this.pos.x = randomX();
