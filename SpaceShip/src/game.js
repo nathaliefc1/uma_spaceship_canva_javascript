@@ -1,6 +1,7 @@
 import { Spaceship } from "./actors/Spaceship";
 import { Asteroid } from "./actors/Asteroid";
 import { myManager } from "./manager";
+import { Snack } from "./actors/Snack";
 
 window.addEventListener("load", () => {
   // Get a reference to canvas dom tag
@@ -12,7 +13,12 @@ window.addEventListener("load", () => {
   canvas.height = 600;
 
   // Instancio mis actores fijos durante todo el juego
-  const actors = [new Spaceship(), myManager];
+  const actors = [
+    new Spaceship(),
+    myManager,
+    new Snack(),
+    new Snack(),
+    new Snack()];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
