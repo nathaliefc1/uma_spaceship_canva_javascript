@@ -1,4 +1,3 @@
-import { randomX, randomY } from "../../utils/getRandom";
 const sStationImg = require("../../assets/space-station.png");
 
 class SpaceStation {

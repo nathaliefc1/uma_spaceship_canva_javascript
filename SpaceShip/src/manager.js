@@ -9,7 +9,7 @@ class Manager {
     this.asteroids = [];
     this.snacks = [];
     this.num = 20;
-    this.spaceShipStatus = 100;
+    this.spaceShipStatus = 10;
     this.chrono = 0;
     this.pos = { x: 10, y: 20 };
     this.score = 0;
@@ -29,45 +29,32 @@ class Manager {
     }
   }
 
-  /*newSnacks() {
-    if (this.state) {
-      this.intervalID = setInterval(() => {
-        
-      }, 5000);
-      this.state = false;
-    }
-  }*/
+  removeSnack(index) {
+    this.snacks.splice(index, 1);
+  }
+
+  removeAsteroid(index) {
+    this.asteroids.splice(index, 1);
+  }
+
   lifeBar() {
     return `${this.spaceShipStatus}/100`
   }
   stop() { }
 
-  getDistance(object, spaceship, isAsteroid) {
+  getDistance(object, spaceship, isSnack) {
     const xDiff = spaceship.pos.x - object.pos.x;
     const yDiff = spaceship.pos.y - object.pos.y;
     const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     if (distance <= 30) {
-      if (isAsteroid) {
+      if (isSnack && this.spaceShipStatus < 100) {
+        this.spaceShipStatus += 1
+      } else if (!isSnack) {
         this.spaceShipStatus -= 1;
       }
-      console.log("KABOOM");
     }
     return distance;
   }
-
-  getDistanceSnack(object, spaceship) {
-    const xDiff = spaceship.pos.x - object.pos.x;
-    const yDiff = spaceship.pos.y - object.pos.y;
-    const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-    if (distance <= 30) {
-      this.spaceShipStatus -= 1;
-    }
-    console.log("KABOOM");
-
-    return distance;
-  }
-
-
 
   getChrono() {
     return `${this.chrono.toFixed(2)} sec`;

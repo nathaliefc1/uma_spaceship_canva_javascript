@@ -1,0 +1,6 @@
+
+class Bark {
+    constructor() {
+
+    }
+}

@@ -5,6 +5,7 @@ import { myManager } from "../manager";
 
 const spaceshipImg = require("../../assets/UmaSpaceShip.png");
 const spaceshipBrokeImg = require("../../assets/explosion.png");
+const takeSound = require("../../assets/take.flac");
 // image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 
 class Spaceship {
@@ -20,6 +21,8 @@ class Spaceship {
     this.image.src = spaceshipImg;
     this.frameX = 0;
     this.frameY = 0;
+    this.accelarating = false;
+    this.take = new Audio(takeSound);
   }
 
   update(frame) {
@@ -56,25 +59,35 @@ class Spaceship {
       this.spaceshipSize.h / 3,
       this.spaceshipSize.w / 3,
     );
-    ctx.drawImage(this.image, 3135, 1000, 610, 800, - this.spaceshipSize.w / 2, - this.spaceshipSize.h / 2, this.spaceshipSize.w * 1.1, this.spaceshipSize.h * 1.1); // Pinta la imagen de Uma
+    if (this.accelarating) {
+      ctx.drawImage(this.image, 770.4, 1000, 700, 800, - this.spaceshipSize.w / 2, - this.spaceshipSize.h / 2, this.spaceshipSize.w * 1.1, this.spaceshipSize.h * 1.1);
+    } else {
+      ctx.drawImage(this.image, 3135, 1000, 610, 800, - this.spaceshipSize.w / 2, - this.spaceshipSize.h / 2, this.spaceshipSize.w * 1.1, this.spaceshipSize.h * 1.1); // Pinta la imagen de Uma
+    }
+  }
+
+  eatSnack() {
+    this.take.play();
   }
 
   keyboardEventDown(key) {
-    if (key === "ArrowUp") {
+    if (key === "ArrowLeft") {
       this.angleSpeed = -4;
-    } else if (key === "ArrowDown") {
-      this.angleSpeed = 4;
     } else if (key === "ArrowRight") {
+      this.angleSpeed = 4;
+    } else if (key === "ArrowDown") {
       this.spaceshipAcceleration = 1;
-    } else if (key === "ArrowLeft") {
+    } else if (key === "ArrowUp") {
       this.spaceshipAcceleration = -1;
+      this.accelarating = true;
     }
   }
   keyboardEventUp(key) {
-    if (key === "ArrowRight") {
+    if (key === "ArrowDown") {
       this.spaceshipAcceleration = 0;
-    } else if (key === "ArrowLeft") {
+    } else if (key === "ArrowUp") {
       this.spaceshipAcceleration = 0;
+      this.accelarating = false;
     }
   }
 }

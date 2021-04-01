@@ -12,12 +12,12 @@ window.addEventListener("load", () => {
   const ctx = canvas.getContext("2d");
   canvas.width = 800;
   canvas.height = 600;
+  const mySpaceship = new Spaceship();
 
   // Instancio mis actores fijos durante todo el juego
   const actors = [
-    new Spaceship(),
+    mySpaceship,
     myManager,
-    new Snack(),
     new SpaceStation];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
@@ -33,16 +33,19 @@ window.addEventListener("load", () => {
     lastFrame = time;
 
     enemies.forEach((asteroid, i) => {
-      myManager.getDistance(asteroid, actors[0], true);
+      myManager.getDistance(asteroid, actors[0], false);
       if (asteroid.pos.x >= asteroid.canvasWidth) {
-        enemies.splice(i - 1, 1);
+        myManager.removeAsteroid(i);
       }
     });
     // No funciona
     samples.forEach((snack, i) => {
-      myManager.getDistance(snack, enemies, false);// No funciona porque le estoy dando otros valores entre ellos un array de enemigos no 1 objeto
-      if (snack.pos.y == -1) {
-        snack.splice(i - 1, 1);
+      const distance = myManager.getDistance(snack, actors[0], true);// No funciona porque le estoy dando otros valores entre ellos un array de enemigos no 1 objeto
+      if (snack.pos.y <= 0) {
+        myManager.removeSnack(i);
+      } else if (distance <= 30) {
+        myManager.removeSnack(i);
+        mySpaceship.eatSnack();
       }
     });
     const superActors = [...actors, ...enemies, ...samples];
