@@ -14,7 +14,7 @@ class SpaceStation {
 
     draw(ctx, delta) {
         ctx.fillStyle = this.Color;
-        ctx.fillRect(this.pos.x, this.pos.y, this.snackSize.w, this.snackSize.h);
+        //ctx.fillRect(this.pos.x, this.pos.y, this.snackSize.w, this.snackSize.h);
         ctx.drawImage(this.image, this.pos.x - 10, this.pos.y - 10, this.snackSize.w, this.snackSize.h);
     }
     keyboardEventDown(key) { }

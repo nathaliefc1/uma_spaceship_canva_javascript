@@ -18,8 +18,6 @@ window.addEventListener("load", () => {
     new Spaceship(),
     myManager,
     new Snack(),
-    new Snack(),
-    new Snack(),
     new SpaceStation];
 
   // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
@@ -30,16 +28,24 @@ window.addEventListener("load", () => {
   const render = (time) => {
 
     let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
-
+    let samples = [...myManager.snacks];
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
+
     enemies.forEach((asteroid, i) => {
-      myManager.getDistance(asteroid, actors[0]);
+      myManager.getDistance(asteroid, actors[0], true);
       if (asteroid.pos.x >= asteroid.canvasWidth) {
         enemies.splice(i - 1, 1);
       }
     });
-    const superActors = [...actors, ...enemies];
+    // No funciona
+    samples.forEach((snack, i) => {
+      myManager.getDistance(snack, enemies, false);// No funciona porque le estoy dando otros valores entre ellos un array de enemigos no 1 objeto
+      if (snack.pos.y == -1) {
+        snack.splice(i - 1, 1);
+      }
+    });
+    const superActors = [...actors, ...enemies, ...samples];
     superActors.forEach((actor) => actor.update && actor.update(delta));
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
@@ -52,6 +58,7 @@ window.addEventListener("load", () => {
     });
 
     myManager.start(); // Pinta enemigos con SetInterval
+    //myManager.newSnacks();
 
     if (myManager.gameOver) {
       setTimeout(() => {

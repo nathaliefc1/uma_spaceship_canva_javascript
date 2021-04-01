@@ -3,7 +3,7 @@ const asteroidImg = require("../../assets/asteroid.png");
 //https://www.pngfind.com/download/xTimJh_asteroid-pixel-art-red-button-hd-png-download/
 
 class Asteroid {
-  constructor(pos = { x: 0, y: 0 }, size = { w: 25, h: 25 }) {
+  constructor(pos = { x: randomX() - 4, y: randomY() }, size = { w: 25, h: 25 }) {
     this.asteroidColor = "yellow";
     this.pos = pos;
     this.xSpeed = 3;

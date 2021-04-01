@@ -6,7 +6,7 @@ class Snack {
         this.color = "green";
         this.pos = pos;
         this.snackSize = size;
-        this.ySpeed = 2;
+        this.ySpeed = 1;
         this.directionY = -1;
         this.canvasWidth = 800;
         this.canvasHeigth = 600;
@@ -22,7 +22,7 @@ class Snack {
 
     draw(ctx, delta) {
         ctx.fillStyle = this.Color;
-        ctx.fillRect(this.pos.x, this.pos.y, this.snackSize.w, this.snackSize.h);
+        //ctx.fillRect(this.pos.x, this.pos.y, this.snackSize.w, this.snackSize.h);
         ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, this.snackSize.w, this.snackSize.h);
     }
     keyboardEventDown(key) { }
