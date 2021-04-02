@@ -1,14 +1,12 @@
 import { Spaceship } from "./actors/Spaceship";
-import { Asteroid } from "./actors/Asteroid";
 import { myManager } from "./manager";
-import { Snack } from "./actors/Snack";
 import { SpaceStation } from "./actors/SpaceStation";
 
 window.addEventListener("load", () => {
-  // Get a reference to canvas dom tag
+
   const canvas = document.getElementById("root");
   const backgroundMusic = document.getElementById("background-music");
-  // Get the 2D context
+
   const ctx = canvas.getContext("2d");
   canvas.width = 800;
   canvas.height = 600;
@@ -25,7 +23,6 @@ window.addEventListener("load", () => {
   let over = false;
 
   const render = (time) => {
-
     let enemies = myManager.asteroids;
     let samples = myManager.snacks;
     let delta = (time - lastFrame) / 1000;

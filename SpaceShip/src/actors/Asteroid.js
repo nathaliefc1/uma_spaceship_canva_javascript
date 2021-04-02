@@ -1,6 +1,6 @@
 import { randomX, randomY } from "../../utils/getRandom";
 const asteroidImg = require("../../assets/asteroid.png");
-//https://www.pngfind.com/download/xTimJh_asteroid-pixel-art-red-button-hd-png-download/
+
 
 class Asteroid {
   constructor(pos = { x: randomX() - 4, y: randomY() }, size = { w: 25, h: 25 }) {
@@ -27,8 +27,8 @@ class Asteroid {
 
   draw(ctx, delta) {
     ctx.fillStyle = this.asteroidColor;
-    ctx.fillRect(this.pos.x, this.pos.y, this.asteroidSize.w - 10, this.asteroidSize.h - 10); // Pinta cuadrado actor
-    ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, this.asteroidSize.w, this.asteroidSize.h); // Pinta imagen actor
+    ctx.fillRect(this.pos.x, this.pos.y, this.asteroidSize.w - 10, this.asteroidSize.h - 10);
+    ctx.drawImage(this.image, this.pos.x - 5, this.pos.y - 5, this.asteroidSize.w, this.asteroidSize.h);
   }
 
   keyboardEventDown(key) { }

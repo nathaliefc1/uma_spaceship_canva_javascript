@@ -1,12 +1,10 @@
 import angle2rad from "../../utils/angle2rad";
 import checkLimits from "../../utils/checkLimits";
-import { Asteroid } from "./Asteroid";
 import { myManager } from "../manager";
 
 const spaceshipImg = require("../../assets/UmaSpaceShip.png");
 const spaceshipBrokeImg = require("../../assets/explosion.png");
 const takeSound = require("../../assets/take.flac");
-// image source https://www.pikpng.com/pngvi/iJwTwhi_spaceship-starfish-pixel-art-clipart/
 
 class Spaceship {
   constructor(pos = { x: 720, y: 300 }, size = { w: 60, h: 60 }) {
@@ -27,16 +25,15 @@ class Spaceship {
 
   update(frame) {
     this.angle += this.angleSpeed;
-    this.angleSpeed *= 0.9; // reduce la velocidad en un 90% en cada frame
+    this.angleSpeed *= 0.9;
     this.spaceshipSpeed =
-      this.spaceshipSpeed * 0.9 + this.spaceshipAcceleration; // la velocidad se va reduciendo pero la aceleración es constante
+      this.spaceshipSpeed * 0.9 + this.spaceshipAcceleration;
 
     const newPos = {
-      x: this.pos.x + Math.cos(angle2rad(this.angle)) * this.spaceshipSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
-      y: this.pos.y + Math.sin(angle2rad(this.angle)) * this.spaceshipSpeed, // el giro es con respecto a la velocidad del ejeX y el ejeY
+      x: this.pos.x + Math.cos(angle2rad(this.angle)) * this.spaceshipSpeed,
+      y: this.pos.y + Math.sin(angle2rad(this.angle)) * this.spaceshipSpeed,
     };
 
-    //this.pos = newPos;
     if (checkLimits(newPos)) {
       this.pos = newPos;
     }
@@ -48,11 +45,9 @@ class Spaceship {
       ctx.drawImage(this.image, 0, 0, 512, 512, this.pos.x - 25, this.pos.y - 27, this.spaceshipSize.w, this.spaceshipSize.h);
       myManager.gameOver = true;
     }
-    // draw spaceship
     ctx.translate(this.pos.x, this.pos.y);
     ctx.rotate(angle2rad(this.angle));
     ctx.fillStyle = this.spaceshipColor;
-    // Pinta el actor rectángulo rojo
     ctx.fillRect(
       -this.spaceshipSize.h / 6,
       -this.spaceshipSize.w / 6,
