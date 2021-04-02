@@ -1,6 +1,5 @@
 import { Asteroid } from "./actors/Asteroid";
 import { Snack } from "./actors/Snack";
-import { Spaceship } from "./actors/Spaceship";
 
 class Manager {
   constructor() {
@@ -16,7 +15,6 @@ class Manager {
     this.gameOver = false;
   }
 
-  // Creo set interval para crear nuevos asteroides cada 5 segundos
   start() {
     if (this.state) {
       this.intervalID = setInterval(() => {
@@ -40,7 +38,6 @@ class Manager {
   lifeBar() {
     return `${this.spaceShipStatus}/100`
   }
-  stop() { }
 
   getDistance(object, spaceship, isSnack) {
     const xDiff = spaceship.pos.x - object.pos.x;
@@ -61,7 +58,7 @@ class Manager {
   }
 
   update() {
-    this.chrono += 1 / 100; //25
+    this.chrono += 1 / 100;
   }
 
   draw(ctx, delta) {

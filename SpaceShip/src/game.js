@@ -14,21 +14,20 @@ window.addEventListener("load", () => {
   canvas.height = 600;
   const mySpaceship = new Spaceship();
 
-  // Instancio mis actores fijos durante todo el juego
   const actors = [
     mySpaceship,
     myManager,
-    new SpaceStation];
+    new SpaceStation
+  ];
 
-  // GAME LOOP -> BUCLE DE RENDERIZADO Y ACTUALIZACIÓN
   let lastFrame = 0;
   let endAnimFrame = 0;
   let over = false;
 
   const render = (time) => {
 
-    let enemies = [...myManager.asteroids]; // traigo el array de asteroides creado cada 5 segundos
-    let samples = [...myManager.snacks];
+    let enemies = myManager.asteroids;
+    let samples = myManager.snacks;
     let delta = (time - lastFrame) / 1000;
     lastFrame = time;
 
@@ -38,9 +37,9 @@ window.addEventListener("load", () => {
         myManager.removeAsteroid(i);
       }
     });
-    // No funciona
+
     samples.forEach((snack, i) => {
-      const distance = myManager.getDistance(snack, actors[0], true);// No funciona porque le estoy dando otros valores entre ellos un array de enemigos no 1 objeto
+      const distance = myManager.getDistance(snack, actors[0], true);
       if (snack.pos.y <= 0) {
         myManager.removeSnack(i);
       } else if (distance <= 30) {
@@ -48,33 +47,33 @@ window.addEventListener("load", () => {
         mySpaceship.eatSnack();
       }
     });
+
     const superActors = [...actors, ...enemies, ...samples];
+
     superActors.forEach((actor) => actor.update && actor.update(delta));
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Actualiza juego y pinta actores
     superActors.forEach((actor) => {
-      ctx.save(); // guarda el valor inicial para volver a restore y comenzar de nuevo
+      ctx.save();
       actor.draw(ctx, delta);
-      ctx.restore(); // restoring a saves state
+      ctx.restore();
     });
 
-    myManager.start(); // Pinta enemigos con SetInterval
-    //myManager.newSnacks();
+    myManager.start();
 
     if (myManager.gameOver) {
       setTimeout(() => {
         over = true;
       }, 300);
-    }
+    };
     if (over) {
       window.cancelAnimationFrame(endAnimFrame);
       const startAgain = window.confirm(
         `Game over! \nYour score is: ${myManager.getChrono()}\nStart again?`,
       );
       if (startAgain) {
-        console.log("yes");
+        window.location.reload();
       } else {
         window.close();
       }
@@ -83,8 +82,6 @@ window.addEventListener("load", () => {
     }
   };
 
-  // setInterval(render, frameTime)
-
   const startButton = document.getElementById("start-game");
 
   startButton.addEventListener("click", (e) => {
@@ -92,12 +89,10 @@ window.addEventListener("load", () => {
     endAnimFrame = window.requestAnimationFrame(render);
   });
 
-  //window.requestAnimationFrame(render);
-
-  // Eventos del teclado
   window.addEventListener("keydown", (e) => {
     actors.forEach((actor) => actor.keyboardEventDown(e.key));
   });
+
   window.addEventListener("keyup", (e) => {
     actors.forEach((actor) => {
       actor.keyboardEventUp(e.key);
