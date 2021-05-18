@@ -1,4 +1,5 @@
 Play Here --> [https://nathaliefc1.github.io/uma_spaceship_canvas_javascript/](https://nathaliefc1.github.io/uma_spaceship_canvas_javascript/)
+![Alt Text](https://media.giphy.com/media/26BoCVdjSJOWT0Fpu/giphy.gif)
 
 # UMA SPACESHIP
 
@@ -16,7 +17,7 @@ Al conseguir huesos aumentarán tus puntos en la barra de vida.
 
 Mucha suerte UMA.
 
-![Alt Text](https://media.giphy.com/media/26BoCVdjSJOWT0Fpu/giphy.gif)
+
 
 
 
