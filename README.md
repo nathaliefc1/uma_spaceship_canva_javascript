@@ -1,3 +1,5 @@
+Play Here --> [https://nathaliefc1.github.io/uma_spaceship_canvas_javascript/](https://nathaliefc1.github.io/uma_spaceship_canvas_javascript/)
+
 # UMA SPACESHIP
 
 En un planeta consumido por el calentamiento global, guerras entre paises y virus extraños, se ha planteado la idea de habitar otros planetas.
@@ -16,6 +18,6 @@ Mucha suerte UMA.
 
 ![Alt Text](https://media.giphy.com/media/26BoCVdjSJOWT0Fpu/giphy.gif)
 
-![Farmers Market Finder Demo](https://media.giphy.com/media/26BoCVdjSJOWT0Fpu/giphy.gif)
+
 
 ## README
