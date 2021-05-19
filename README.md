@@ -17,8 +17,19 @@ Al conseguir huesos aumentarán tus puntos en la barra de vida.
 
 Mucha suerte UMA.
 
-
+![Alt Text](https://media.giphy.com/media/11syU6ZZ6PsGRO/giphy.gif)
 
 
 
 ## README
+
+Este proyecto nace inspirado por UMA la mascota de la casa, una perrita especial. Queria crear un juevo en canvas divertido y con una misión muy particular. 
+Realizar este juego fue un reto muy divertido, ver tu juego cobrar vida es uansatisfacción incalculable.
+
+Lenguajes y herramientas utilizados:
+- Parcel 
+- Javascript
+- Node.js
+
+Te invito a que lo jueges, espero disfrutes tanto como yo.
+
