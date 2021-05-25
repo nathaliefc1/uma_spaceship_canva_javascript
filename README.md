@@ -15,7 +15,7 @@ Pero ten cuidado en el camino deberás esquivar asteroides e incluso quien sabe 
 Al colisionar con los asteroides te restaran puntos de tu total de vida que es 100pts.
 Al conseguir huesos aumentarán tus puntos en la barra de vida.
 
-Mucha suerte UMA.
+Mucha suerte Astronauta y mucha suerte UMA.
 
 ![Alt Text](https://media.giphy.com/media/11syU6ZZ6PsGRO/giphy.gif)
 
@@ -23,13 +23,15 @@ Mucha suerte UMA.
 
 ## README
 
-Este proyecto nace inspirado por UMA la mascota de la casa, una perrita especial. Queria crear un juevo en canvas divertido y con una misión muy particular. 
-Realizar este juego fue un reto muy divertido, ver tu juego cobrar vida es uansatisfacción incalculable.
+Este proyecto nace inspirado por UMA la mascota de la casa, una perrita especial y espacial. Queria crear un juego en canvas con una misión muy particular. 
+Realizar este juego fue un reto muy divertido y frustrante, utilizar javascript para que los elementos dibujados en el DOM realicen exactamente lo que tu quieres es complicado pero poco a poco todo fue encajando y funcionando. 
+Desde variables, funciones de javascript, arrays, objetos, barra de vida, múscia, etc.. poco a poco fui cogiendo más agilidad hasta ver al final mi juego cobrar vida.
 
 Lenguajes y herramientas utilizados:
 - Parcel 
 - Javascript
-- Node.js
+- HTML5
+- CSS
 
-Te invito a que lo jueges, espero disfrutes tanto como yo.
-
+Te invito a jugar!
+Espero disfrutes tanto como yo!
